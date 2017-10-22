@@ -1,6 +1,10 @@
 .forGifs img {
     height: 120px;
     width: 120px;
-    float: left;
     margin: 3.5% 2.5%;
+}
+
+.forGifs {
+    float: left;
+    margin: 3.2% 2.45;
 }
