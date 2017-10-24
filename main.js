@@ -43,25 +43,26 @@ $(document).ready(function() {
     show_all_buttons(user_choices);
 
     $("#buttons").on("click", "button", function() {
-        var search_term = $(this).data("name");
+        var search_term = $(this).data("name").split(' ').join('_');
         show_all_gifs(search_term);
 
     });
 
     $("#add_input").on("click", function(event) {
+        event.preventDefault();
         var user_input = $("#user_added_term").val();
         user_choices.push(user_input)
         show_all_buttons(user_choices);
+        $("#user_added_term").val("");
     })
 
     $('#add_input').keypress(function(e) {
-        if (e.key == 13) {
-            var user_input = $("#user_added_term").val();
-            user_choices.push(user_input)
-            show_all_buttons(user_choices);
-            return false
+        if (e.which == 13) {
+            $('#add_input').click();
         }
     });
+
+
 
     $(".gif_display").on("click", ".forGifs", function() {
         var state_of_pic = $(this).data("state");
