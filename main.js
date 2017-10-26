@@ -10,7 +10,7 @@ var user_choices = ["the office", "dogs", "cats", "pandas"];
 function show_all_gifs(the_button) {
     $(".gif_display").empty();
     $.ajax({
-        url: "http://api.giphy.com/v1/gifs/search?q='" + the_button + "'&api_key=IzBmA6Dpos0EdfXIav4LTX8PYpp03Nj6&limit=13",
+        url: "http://api.giphy.com/v1/gifs/search?q='" + the_button + "'&api_key=IzBmA6Dpos0EdfXIav4LTX8PYpp03Nj6&limit=12",
         method: "GET"
     }).done(function(returned) {
         var the_gifs = returned.data;
@@ -31,7 +31,7 @@ function show_all_gifs(the_button) {
 
                 console.log(gif.images.downsized_still.url);
                 $(gif_div).append(gif_img);
-                $(gif_div).append("<h5>Rating: " + gif.rating + "</h5>");
+                $(gif_div).append("<h5>Rating: " + gif.rating.toUpperCase() + "</h5>");
 
 
                 $(".gif_display").append(gif_div);

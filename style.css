@@ -1,14 +1,38 @@
+body {
+    background-color: grey;
+    color: white;
+}
+
 .forGifs img {
-    height: 120px;
-    width: 120px;
-    margin: 3.2% 2.45;
+    height: 180px;
+    width: 180px;
 }
 
 .forGifs {
     float: left;
-    margin: 3.2% 2.45;
+    padding: .5%;
 }
 
 #buttons {
     margin-bottom: 2.5%;
+}
+
+#user_added_term {
+    width: 400px;
+}
+
+.footer {
+    padding: 3%;
+    height: 70px;
+    background-color: lightgrey;
+}
+
+.body-minus-footer {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
 }
