@@ -18,11 +18,14 @@ function show_all_gifs(the_button) {
         the_gifs.forEach(function(gif) {
 
             if (gif.rating !== "r" && gif.rating !== "pg-13") {
-                var gif_div = $("<div class='forGifs'>").attr("data", "moving");
+                var gif_div = $("<div class='forGifs'>");
                 var gif_img = $("<img/>");
                 gif_img.attr({
                     src: gif.images.fixed_height_small.url,
-                    data: gif.images.original_still.url
+                    data_still: gif.images.original_still.url,
+                    data_animate: gif.images.fixed_height_small.url,
+                    data_state: "animate"
+
                 });
 
 
@@ -64,22 +67,21 @@ $(document).ready(function() {
 
 
 
-    $(".gif_display").on("click", ".forGifs", function() {
-        var state_of_pic = $(this).data("state");
-        console.log(state_of_pic);
+    $(".gif_display").on("click", ".forGifs img", function() {
+        var state = $(this).attr('data_state');
 
-        if (state_of_pic == "still") {
-            console.log("Its still");
-            $(this).find("img").attr("src", this.data);
-        } else {
-            $(this).find("img").attr("src", this.src);
+        if (state === 'animate') {
+            $(this).attr('src', $(this).attr('data_still'));
+            $(this).attr('data_state', 'still');
+        } else if (state == "still") {
+            $(this).attr('src', $(this).attr('data_animate'));
+            $(this).attr('data_state', 'animate');
         }
-        $(this).attr('src', (state === 'still') ? $(this).attr('data-animate') : $(this).attr('data-still'));
-        $(this).attr('data-state', (state === 'still') ? 'animate' : 'still');
+
 
     });
 
 
 
 
-})
+});
